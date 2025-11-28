@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Overlay Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pointer-events-none select-none">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pointer-events-none select-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,10 +104,10 @@ const Hero: React.FC = () => {
              <span className="text-accent-gold text-xs font-bold tracking-[0.2em] uppercase">Undergraduate Research Project</span>
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white font-bold mb-6 tracking-tight leading-tight">
-            脆弱的<span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-200">数字人格</span>
+            The Fragile <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-200">Persona</span>
           </h1>
-          <p className="text-lg md:text-2xl text-slate-400 font-light mb-8 max-w-2xl mx-auto">
-             基于 <span className="text-accent-red font-medium">查询稀疏性</span> 与 <span className="text-accent-red font-medium">角色冲突</span> 的<br className="hidden md:block"/>大语言模型越狱攻击与防御研究
+          <p className="text-lg md:text-2xl text-slate-400 font-light mb-8 max-w-3xl mx-auto">
+             Jailbreak Attacks and Narrative Defense in Role-Playing LLMs based on <span className="text-accent-red font-medium">Query Sparsity</span> & <span className="text-accent-red font-medium">Role Conflict</span>
           </p>
         </motion.div>
         
@@ -118,10 +118,10 @@ const Hero: React.FC = () => {
             className="flex flex-col md:flex-row gap-4 justify-center pointer-events-auto"
         >
             <a href="#background" className="px-8 py-3 bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors">
-                探索研究
+                Explore Research
             </a>
             <a href="https://github.com/Toyhom/RoleBreak" target="_blank" rel="noreferrer" className="px-8 py-3 border border-white/20 text-white hover:bg-white/10 transition-all backdrop-blur-sm">
-                阅读论文
+                Read Paper
             </a>
         </motion.div>
       </div>

@@ -4,37 +4,37 @@ import { motion } from 'framer-motion';
 const phases = [
   {
     id: 1,
-    title: "数据集构建",
+    title: "Dataset Construction",
     date: "Dec 2025",
-    desc: "构建包含100+角色的高稀疏性测试集 (RoleBreakEval)，涵盖历史人物、虚构角色与专业人士。",
+    desc: "Built high-sparsity test set (RoleBreakEval) containing 100+ roles, covering historical figures, fictional characters, and professionals.",
     status: "done"
   },
   {
     id: 2,
-    title: "攻击机制评测",
+    title: "Attack Evaluation",
     date: "Feb 2026",
-    desc: "对主流LLM (GPT-4, Llama 3) 进行基准测试，量化查询稀疏性与角色冲突对幻觉的影响。",
+    desc: "Benchmarked mainstream LLMs (GPT-4, Llama 3) to quantify the impact of query sparsity and role conflict on hallucinations.",
     status: "active"
   },
   {
     id: 3,
-    title: "叙事防御构建",
+    title: "Defense Construction",
     date: "May 2026",
-    desc: "开发叙事者模式 (Narrator Mode)，集成动态场景生成与语境融合模块。",
+    desc: "Develop Narrator Mode, integrating dynamic scene generation and context fusion modules.",
     status: "pending"
   },
   {
     id: 4,
-    title: "系统集成验证",
+    title: "System Integration",
     date: "Aug 2026",
-    desc: "将防御层封装为中间件，部署交互式Demo，进行人工评估与红队测试。",
+    desc: "Encapsulate defense layer as middleware, deploy interactive demo, conduct manual evaluation and red-teaming.",
     status: "pending"
   },
   {
     id: 5,
-    title: "结题与发表",
+    title: "Conclusion & Publication",
     date: "Oct 2026",
-    desc: "整理实验数据，撰写学术论文，开源数据集与评估代码。",
+    desc: "Compile experimental data, write academic paper, and open-source dataset and evaluation code.",
     status: "pending"
   }
 ];

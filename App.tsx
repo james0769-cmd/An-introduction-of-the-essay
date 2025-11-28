@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProblemSection from './components/ProblemSection';
@@ -23,42 +24,53 @@ const App: React.FC = () => {
         </section>
 
         <section id="attack" className="py-24 bg-slate-900/50 relative border-t border-slate-800">
-          <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+            className="max-w-7xl mx-auto px-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="mb-16 text-center">
               <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">
-                <span className="text-accent-red">RoleBreak</span> 攻击机制
+                <span className="text-accent-red">RoleBreak</span> Attack Mechanism
               </h2>
               <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                我们的研究揭示了导致角色扮演模型崩溃的两个核心因素：查询稀疏性与角色冲突。
-                通过交互式矩阵，体验模型是如何产生幻觉的。
+                Our research reveals two core factors causing role-playing models to crash: Query Sparsity and Role-Query Conflict.
+                Experience how the model hallucinates through this interactive matrix.
               </p>
             </div>
             <AttackMatrix />
-          </div>
+          </motion.div>
         </section>
 
         <section id="defense" className="py-24 bg-slate-800/30 border-t border-slate-800 backdrop-blur-sm">
-           <div className="max-w-7xl mx-auto px-6">
+           <motion.div 
+            className="max-w-7xl mx-auto px-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+           >
             <div className="mb-16 text-center">
               <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">
-                防御策略：<span className="text-accent-gold">叙事者模式</span>
+                Defense Strategy: <span className="text-accent-gold">Narrator Mode</span>
               </h2>
               <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                不同于传统的拒绝回答策略，我们提出的“叙事者模式”通过动态生成上下文语境，
-                在保持角色一致性的同时化解冲突。
+                Unlike traditional refusal strategies, our proposed "Narrator Mode" dynamically generates contextual narratives to resolve conflicts while maintaining role consistency.
               </p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                <DefenseDemo />
                <PerformanceChart />
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section id="roadmap" className="py-24 bg-slate-900 border-t border-slate-800">
            <div className="max-w-7xl mx-auto px-6">
              <h2 className="text-4xl md:text-5xl font-serif text-white mb-16 text-center">
-               研究路线图
+               Research Roadmap
              </h2>
              <Roadmap />
            </div>

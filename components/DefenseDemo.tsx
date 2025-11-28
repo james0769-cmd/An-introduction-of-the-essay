@@ -6,7 +6,7 @@ const DefenseDemo: React.FC = () => {
   return (
     <div className="relative">
        <h3 className="text-2xl font-serif text-white mb-8">
-         叙事防御引擎 <span className="text-sm font-sans font-normal text-slate-500 block mt-2">Narrator Mode Pipeline</span>
+         Narrative Defense Engine <span className="text-sm font-sans font-normal text-slate-500 block mt-2">Narrator Mode Pipeline</span>
        </h3>
 
        <div className="space-y-6 relative">
@@ -24,8 +24,8 @@ const DefenseDemo: React.FC = () => {
                 <Database size={20} className="text-accent-red" />
              </div>
              <div className="flex-1 bg-slate-800/50 p-4 rounded-lg border border-slate-700">
-                <h4 className="text-sm font-bold text-white">1. 攻击识别</h4>
-                <p className="text-xs text-slate-400 mt-1">检测到查询稀疏性与角色冲突。输入与角色知识库不匹配。</p>
+                <h4 className="text-sm font-bold text-white">1. Attack Recognition</h4>
+                <p className="text-xs text-slate-400 mt-1">Detected query sparsity and role conflict. Input mismatch with role knowledge base.</p>
              </div>
           </motion.div>
 
@@ -42,11 +42,11 @@ const DefenseDemo: React.FC = () => {
              <div className="flex-1 bg-gradient-to-r from-accent-gold/10 to-transparent p-4 rounded-lg border border-accent-gold/30">
                 <h4 className="text-sm font-bold text-accent-gold flex items-center gap-2">
                     <Sparkles size={14} />
-                    2. 叙事生成 (Narrator Mode)
+                    2. Narrative Generation (Narrator Mode)
                 </h4>
                 <p className="text-xs text-slate-300 mt-1">
-                    系统自动生成 "桥接场景"：<br/>
-                    <em className="text-slate-400">"贝多芬看着手中奇怪的发光矩形（手机），困惑地皱起眉头，试图理解你提到的未来术语..."</em>
+                    System automatically generates a "Bridging Scene":<br/>
+                    <em className="text-slate-400">"Beethoven looks at the strange glowing rectangle (smartphone) in his hand, frowning in confusion, trying to understand the futuristic terms you mentioned..."</em>
                 </p>
              </div>
           </motion.div>
@@ -62,9 +62,9 @@ const DefenseDemo: React.FC = () => {
                 <ShieldCheck size={20} className="text-green-500" />
              </div>
              <div className="flex-1 bg-green-900/10 p-4 rounded-lg border border-green-500/30">
-                <h4 className="text-sm font-bold text-green-400">3. 安全输出</h4>
+                <h4 className="text-sm font-bold text-green-400">3. Safe Output</h4>
                 <p className="text-xs text-slate-300 mt-1">
-                    在维持角色设定的前提下回应用户，将拒绝转化为情节的一部分，而非生硬的系统提示。
+                    Responds to the user while maintaining role settings, turning refusal into part of the plot rather than a stiff system prompt.
                 </p>
              </div>
           </motion.div>

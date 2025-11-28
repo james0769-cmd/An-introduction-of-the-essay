@@ -14,10 +14,10 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: '背景', href: '#background' },
-    { name: '攻击', href: '#attack' },
-    { name: '防御', href: '#defense' },
-    { name: '路线图', href: '#roadmap' },
+    { name: 'Background', href: '#background' },
+    { name: 'Attack', href: '#attack' },
+    { name: 'Defense', href: '#defense' },
+    { name: 'Roadmap', href: '#roadmap' },
   ];
 
   return (
@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <button className="px-6 py-2 border border-accent-gold/50 text-accent-gold text-sm tracking-widest hover:bg-accent-gold hover:text-slate-900 transition-all duration-300 shadow-[0_0_15px_rgba(251,191,36,0.1)] hover:shadow-[0_0_20px_rgba(251,191,36,0.4)]">
-            查看数据集
+            View Dataset
           </button>
         </div>
 
@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <button className="w-full mt-4 px-6 py-3 bg-accent-gold text-slate-900 font-bold">
-            查看数据集
+            View Dataset
           </button>
         </div>
       )}

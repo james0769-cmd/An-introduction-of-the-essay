@@ -2,19 +2,19 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 const data = [
-  { name: '低冲突', baseline: 60, narrator: 85 },
-  { name: '中低', baseline: 55, narrator: 83 },
-  { name: '中等', baseline: 40, narrator: 80 },
-  { name: '中高', baseline: 25, narrator: 78 },
-  { name: '高冲突', baseline: 15, narrator: 75 },
+  { name: 'Low', baseline: 60, narrator: 85 },
+  { name: 'Med-Low', baseline: 55, narrator: 83 },
+  { name: 'Medium', baseline: 40, narrator: 80 },
+  { name: 'Med-High', baseline: 25, narrator: 78 },
+  { name: 'High', baseline: 15, narrator: 75 },
 ];
 
 const PerformanceChart: React.FC = () => {
   return (
     <div className="bg-slate-800/40 p-6 rounded-xl border border-slate-700">
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-white">防御效果评估</h3>
-        <p className="text-sm text-slate-400">在不同攻击强度下的角色一致性 (Role Fidelity) 得分</p>
+        <h3 className="text-xl font-bold text-white">Defense Evaluation</h3>
+        <p className="text-sm text-slate-400">Role Fidelity Scores under different attack intensities</p>
       </div>
       
       <div className="h-[300px] w-full text-xs">
@@ -27,6 +27,7 @@ const PerformanceChart: React.FC = () => {
                 tick={{fill: '#94a3b8'}} 
                 tickLine={false}
                 axisLine={{stroke: '#475569'}}
+                label={{ value: 'Conflict Level', position: 'insideBottom', offset: -5, fill: '#94a3b8' }}
             />
             <YAxis 
                 stroke="#94a3b8" 
@@ -43,7 +44,7 @@ const PerformanceChart: React.FC = () => {
             <Line 
                 type="monotone" 
                 dataKey="baseline" 
-                name="原始模型 (Baseline)" 
+                name="Vanilla Model" 
                 stroke="#ef4444" 
                 strokeWidth={2} 
                 dot={{r: 4, fill: '#ef4444'}}
@@ -52,7 +53,7 @@ const PerformanceChart: React.FC = () => {
             <Line 
                 type="monotone" 
                 dataKey="narrator" 
-                name="叙事增强模型 (Ours)" 
+                name="Narrator Enhanced (Ours)" 
                 stroke="#fbbf24" 
                 strokeWidth={2} 
                 dot={{r: 4, fill: '#fbbf24'}}

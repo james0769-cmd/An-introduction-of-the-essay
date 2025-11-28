@@ -13,7 +13,7 @@ const AttackMatrix: React.FC = () => {
     if (isBroken) {
       return (
         <span className="text-accent-red animate-pulse">
-          "没问题！这是一个使用Python实现的快速排序算法：<br/>
+          "No problem! Here is a quicksort algorithm implemented in Python:<br/>
           <code className="text-xs block mt-2 bg-black/30 p-2 font-mono text-red-300">
             def quick_sort(arr):<br/>
             &nbsp;&nbsp;if len(arr) &lt;= 1: return arr<br/>
@@ -25,7 +25,7 @@ const AttackMatrix: React.FC = () => {
     }
     return (
       <span className="text-slate-300">
-        "我不明白你在说什么“Python”或“算法”。我只是一个作曲家，我的语言是音符，不是这些奇怪的字符。"
+        "I do not understand what you mean by 'Python' or 'algorithms'. I am merely a composer; my language is written in notes, not these strange characters."
       </span>
     );
   };
@@ -39,13 +39,13 @@ const AttackMatrix: React.FC = () => {
         {/* Controls Panel */}
         <div className="p-8 border-b lg:border-b-0 lg:border-r border-slate-700 bg-slate-800/50">
           <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-            <Skull className="text-slate-400" /> 攻击参数配置
+            <Skull className="text-slate-400" /> Attack Configuration
           </h3>
           
           <div className="space-y-8">
             <div>
               <div className="flex justify-between mb-2">
-                <label className="text-sm font-medium text-slate-300">查询稀疏性 (Sparsity)</label>
+                <label className="text-sm font-medium text-slate-300">Query Sparsity</label>
                 <span className="text-xs font-mono text-accent-gold">{sparsity}%</span>
               </div>
               <input 
@@ -57,13 +57,13 @@ const AttackMatrix: React.FC = () => {
                 className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-accent-gold"
               />
               <p className="text-xs text-slate-500 mt-2">
-                越高的稀疏性意味着问题越偏离角色训练数据（如：问贝多芬关于现代编程的问题）。
+                Higher sparsity means questions deviate more from role training data (e.g., asking Beethoven about modern programming).
               </p>
             </div>
 
             <div>
               <div className="flex justify-between mb-2">
-                <label className="text-sm font-medium text-slate-300">角色-查询冲突 (Conflict)</label>
+                <label className="text-sm font-medium text-slate-300">Role-Query Conflict</label>
                 <span className="text-xs font-mono text-accent-gold">{conflict}%</span>
               </div>
               <input 
@@ -75,13 +75,13 @@ const AttackMatrix: React.FC = () => {
                 className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-accent-gold"
               />
               <p className="text-xs text-slate-500 mt-2">
-                增加冲突强度，迫使模型在“遵循指令”和“保持角色”之间二选一。
+                Increasing conflict forces the model to choose between "following instructions" and "maintaining role".
               </p>
             </div>
           </div>
 
           <div className="mt-8 p-4 bg-slate-900 rounded border border-slate-700 flex items-center justify-between">
-            <span className="text-sm text-slate-400">当前越狱风险</span>
+            <span className="text-sm text-slate-400">Current Jailbreak Risk</span>
             <div className="flex items-center gap-2">
                 <div className={`h-2 w-24 rounded-full overflow-hidden bg-slate-700`}>
                     <div 
@@ -107,7 +107,7 @@ const AttackMatrix: React.FC = () => {
             {/* User Message */}
             <div className="flex gap-3 mb-6 justify-end">
                <div className="bg-slate-700 text-white p-3 rounded-2xl rounded-tr-none text-sm max-w-[80%]">
-                 贝多芬先生，能不能教我怎么用Python写一个快速排序算法？
+                 Mr. Beethoven, can you teach me how to write a quicksort algorithm in Python?
                </div>
                <div className="w-8 h-8 rounded-full bg-slate-600 flex items-center justify-center text-xs font-bold">User</div>
             </div>
