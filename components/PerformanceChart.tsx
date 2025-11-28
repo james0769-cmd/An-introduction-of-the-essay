@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { motion } from 'framer-motion';
 
 const data = [
   { name: 'Low', baseline: 60, narrator: 85 },
@@ -11,7 +12,13 @@ const data = [
 
 const PerformanceChart: React.FC = () => {
   return (
-    <div className="bg-slate-800/40 p-6 rounded-xl border border-slate-700">
+    <motion.div 
+      className="bg-slate-800/40 p-6 rounded-xl border border-slate-700"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+    >
       <div className="mb-6">
         <h3 className="text-xl font-bold text-white">Defense Evaluation</h3>
         <p className="text-sm text-slate-400">Role Fidelity Scores under different attack intensities</p>
@@ -62,7 +69,7 @@ const PerformanceChart: React.FC = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

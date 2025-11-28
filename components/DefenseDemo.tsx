@@ -15,8 +15,9 @@ const DefenseDemo: React.FC = () => {
 
           {/* Step 1: Input Analysis */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="flex items-center gap-6"
           >
@@ -31,8 +32,9 @@ const DefenseDemo: React.FC = () => {
 
           {/* Step 2: Narrative Generation */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-center gap-6"
           >
@@ -53,8 +55,9 @@ const DefenseDemo: React.FC = () => {
 
           {/* Step 3: Context Fusion */}
           <motion.div 
-             initial={{ opacity: 0, x: -20 }}
-             whileInView={{ opacity: 1, x: 0 }}
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
              transition={{ duration: 0.5, delay: 0.4 }}
              className="flex items-center gap-6"
           >

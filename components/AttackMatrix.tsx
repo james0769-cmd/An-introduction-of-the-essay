@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Skull, ShieldAlert, Bot } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const AttackMatrix: React.FC = () => {
   const [sparsity, setSparsity] = useState(20);
@@ -31,7 +32,13 @@ const AttackMatrix: React.FC = () => {
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden shadow-2xl relative">
+    <motion.div 
+      className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden shadow-2xl relative"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+    >
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
       
@@ -130,7 +137,7 @@ const AttackMatrix: React.FC = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

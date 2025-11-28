@@ -120,7 +120,7 @@ const Hero: React.FC = () => {
             <a href="#background" className="px-8 py-3 bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors">
                 Explore Research
             </a>
-            <a href="https://github.com/Toyhom/RoleBreak" target="_blank" rel="noreferrer" className="px-8 py-3 border border-white/20 text-white hover:bg-white/10 transition-all backdrop-blur-sm">
+            <a href="https://aclanthology.org/2025.coling-main.494/" target="_blank" rel="noreferrer" className="px-8 py-3 border border-white/20 text-white hover:bg-white/10 transition-all backdrop-blur-sm">
                 Read Paper
             </a>
         </motion.div>

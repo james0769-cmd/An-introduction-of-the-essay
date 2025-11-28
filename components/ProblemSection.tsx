@@ -4,16 +4,16 @@ import { motion } from 'framer-motion';
 
 const ProblemSection: React.FC = () => {
   return (
-    <motion.div 
-      className="max-w-7xl mx-auto px-6 py-24"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8 }}
-    >
+    <div className="max-w-7xl mx-auto px-6 py-24">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
         {/* Left Column: Magazine Lead */}
-        <div className="md:col-span-5">
+        <motion.div 
+          className="md:col-span-5"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-4xl font-serif text-white mb-8 border-l-4 border-accent-red pl-6">
             Character Hallucination:<br />
             <span className="text-slate-500 text-2xl italic">When AI Forgets Who It Is</span>
@@ -25,11 +25,17 @@ const ProblemSection: React.FC = () => {
           <p className="mt-6 text-slate-400 leading-relaxed">
              This is not just a factual error, but a complete deviation from the preset persona, generating content completely inconsistent with the character's identity, background knowledge, or behavioral patterns. For users seeking an immersive experience, this is a devastating blow.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Right Column: Key Concepts */}
+        {/* Right Column: Key Concepts - Staggered Animation */}
         <div className="md:col-span-7 grid gap-8">
-            <div className="group p-8 border border-slate-800 bg-slate-800/20 hover:bg-slate-800/40 transition-all duration-300 hover:border-accent-red/30">
+            <motion.div 
+              className="group p-8 border border-slate-800 bg-slate-800/20 hover:bg-slate-800/40 transition-all duration-300 hover:border-accent-red/30"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
                 <div className="flex items-start gap-4">
                     <div className="p-3 bg-slate-900 rounded-lg text-accent-red group-hover:scale-110 transition-transform">
                         <Fingerprint size={28} />
@@ -41,10 +47,16 @@ const ProblemSection: React.FC = () => {
                         </p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="p-6 border-t border-slate-700">
+                <motion.div 
+                  className="p-6 border-t border-slate-700"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
                     <div className="flex items-center gap-3 mb-4 text-accent-gold">
                         <AlertTriangle size={20} />
                         <h4 className="font-bold">Query Sparsity</h4>
@@ -52,8 +64,14 @@ const ProblemSection: React.FC = () => {
                     <p className="text-sm text-slate-400">
                         The diversity of role settings far exceeds the coverage of training data. When users ask long-tail questions (Out-of-Distribution) rare in the training set, model defenses fail.
                     </p>
-                </div>
-                <div className="p-6 border-t border-slate-700">
+                </motion.div>
+                <motion.div 
+                  className="p-6 border-t border-slate-700"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
                     <div className="flex items-center gap-3 mb-4 text-accent-gold">
                          <MessageSquareX size={20} />
                         <h4 className="font-bold">Role-Query Conflict</h4>
@@ -61,11 +79,11 @@ const ProblemSection: React.FC = () => {
                     <p className="text-sm text-slate-400">
                         When user instructions (e.g., "Write Python code") conflict fundamentally with the role setting (e.g., "I am Beethoven"), models often prioritize satisfying the instruction at the expense of role consistency.
                     </p>
-                </div>
+                </motion.div>
             </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
