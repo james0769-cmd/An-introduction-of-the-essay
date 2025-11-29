@@ -1,9 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Languages } from 'lucide-react';
+import { useLanguage } from './LanguageContext';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,11 +16,30 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const content = {
+    en: {
+      background: 'Background',
+      attack: 'Attack',
+      defense: 'Defense',
+      roadmap: 'Roadmap',
+      dataset: 'View Dataset'
+    },
+    zh: {
+      background: '研究背景',
+      attack: '攻击演示',
+      defense: '防御机制',
+      roadmap: '研究路线',
+      dataset: '查看数据集'
+    }
+  };
+
+  const t = content[language];
+
   const navLinks = [
-    { name: 'Background', href: '#background' },
-    { name: 'Attack', href: '#attack' },
-    { name: 'Defense', href: '#defense' },
-    { name: 'Roadmap', href: '#roadmap' },
+    { name: t.background, href: '#background' },
+    { name: t.attack, href: '#attack' },
+    { name: t.defense, href: '#defense' },
+    { name: t.roadmap, href: '#roadmap' },
   ];
 
   return (
@@ -50,18 +72,35 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
+          
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+          >
+            <Languages size={18} />
+            {language === 'en' ? 'CN' : 'EN'}
+          </button>
+
           <button className="px-6 py-2 border border-accent-gold/50 text-accent-gold text-sm tracking-widest hover:bg-accent-gold hover:text-slate-900 transition-all duration-300 shadow-[0_0_15px_rgba(251,191,36,0.1)] hover:shadow-[0_0_20px_rgba(251,191,36,0.4)]">
-            View Dataset
+            {t.dataset}
           </button>
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-slate-200"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <button 
+            onClick={toggleLanguage}
+            className="text-slate-200"
+          >
+            <Languages size={20} />
+          </button>
+          <button
+            className="text-slate-200"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -78,7 +117,7 @@ const Navbar: React.FC = () => {
             </a>
           ))}
           <button className="w-full mt-4 px-6 py-3 bg-accent-gold text-slate-900 font-bold">
-            View Dataset
+            {t.dataset}
           </button>
         </div>
       )}

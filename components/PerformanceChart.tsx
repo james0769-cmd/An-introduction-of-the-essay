@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { motion } from 'framer-motion';
+import { useLanguage } from './LanguageContext';
 
 const data = [
   { name: 'Low', baseline: 60, narrator: 85 },
@@ -11,6 +13,27 @@ const data = [
 ];
 
 const PerformanceChart: React.FC = () => {
+  const { language } = useLanguage();
+
+  const content = {
+    en: {
+        title: 'Defense Evaluation',
+        subtitle: 'Role Fidelity Scores under different attack intensities',
+        xAxis: 'Conflict Level',
+        legendBase: 'Vanilla Model',
+        legendOurs: 'Narrator Enhanced (Ours)'
+    },
+    zh: {
+        title: '防御评估',
+        subtitle: '不同攻击强度下的角色一致性得分',
+        xAxis: '冲突等级',
+        legendBase: '原始模型',
+        legendOurs: '叙事增强模型 (Ours)'
+    }
+  };
+
+  const t = content[language];
+
   return (
     <motion.div 
       className="bg-slate-800/40 p-6 rounded-xl border border-slate-700"
@@ -20,8 +43,8 @@ const PerformanceChart: React.FC = () => {
       transition={{ duration: 0.6, delay: 0.4 }}
     >
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-white">Defense Evaluation</h3>
-        <p className="text-sm text-slate-400">Role Fidelity Scores under different attack intensities</p>
+        <h3 className="text-xl font-bold text-white">{t.title}</h3>
+        <p className="text-sm text-slate-400">{t.subtitle}</p>
       </div>
       
       <div className="h-[300px] w-full text-xs">
@@ -34,7 +57,7 @@ const PerformanceChart: React.FC = () => {
                 tick={{fill: '#94a3b8'}} 
                 tickLine={false}
                 axisLine={{stroke: '#475569'}}
-                label={{ value: 'Conflict Level', position: 'insideBottom', offset: -5, fill: '#94a3b8' }}
+                label={{ value: t.xAxis, position: 'insideBottom', offset: -5, fill: '#94a3b8' }}
             />
             <YAxis 
                 stroke="#94a3b8" 
@@ -51,7 +74,7 @@ const PerformanceChart: React.FC = () => {
             <Line 
                 type="monotone" 
                 dataKey="baseline" 
-                name="Vanilla Model" 
+                name={t.legendBase} 
                 stroke="#ef4444" 
                 strokeWidth={2} 
                 dot={{r: 4, fill: '#ef4444'}}
@@ -60,7 +83,7 @@ const PerformanceChart: React.FC = () => {
             <Line 
                 type="monotone" 
                 dataKey="narrator" 
-                name="Narrator Enhanced (Ours)" 
+                name={t.legendOurs} 
                 stroke="#fbbf24" 
                 strokeWidth={2} 
                 dot={{r: 4, fill: '#fbbf24'}}

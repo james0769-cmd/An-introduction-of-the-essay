@@ -1,8 +1,10 @@
+
 import React, { useRef } from 'react';
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
 import { MeshDistortMaterial, Sphere, Float, Stars, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
+import { useLanguage } from './LanguageContext';
 
 // Add type definitions for R3F elements to fix JSX.IntrinsicElements errors
 declare global {
@@ -79,6 +81,37 @@ const HeroParticles = () => {
 }
 
 const Hero: React.FC = () => {
+  const { language } = useLanguage();
+
+  const content = {
+    en: {
+      tag: 'Undergraduate Research Project',
+      titleHighlight: 'Persona',
+      titleMain: 'The Fragile',
+      subtitle: (
+        <>
+          Jailbreak Attacks and Narrative Defense in Role-Playing LLMs based on <span className="text-accent-red font-medium">Query Sparsity</span> & <span className="text-accent-red font-medium">Role Conflict</span>
+        </>
+      ),
+      explore: 'Explore Research',
+      paper: 'Read Paper'
+    },
+    zh: {
+      tag: '大学生创新创业训练计划',
+      titleHighlight: '数字人格',
+      titleMain: '脆弱的',
+      subtitle: (
+        <>
+          基于<span className="text-accent-red font-medium">查询稀疏性</span>与<span className="text-accent-red font-medium">角色冲突</span>的<br className="hidden md:block" />角色扮演大模型越狱攻击与叙事防御
+        </>
+      ),
+      explore: '探索研究',
+      paper: '阅读论文'
+    }
+  };
+
+  const t = content[language];
+
   return (
     <div className="h-screen w-full relative flex items-center justify-center overflow-hidden">
       {/* 3D Scene */}
@@ -101,13 +134,13 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <div className="inline-block mb-4 px-3 py-1 border border-accent-gold/30 rounded-full bg-slate-900/50 backdrop-blur-sm">
-             <span className="text-accent-gold text-xs font-bold tracking-[0.2em] uppercase">Undergraduate Research Project</span>
+             <span className="text-accent-gold text-xs font-bold tracking-[0.2em] uppercase">{t.tag}</span>
           </div>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white font-bold mb-6 tracking-tight leading-tight">
-            The Fragile <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-200">Persona</span>
+            {t.titleMain} <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 via-slate-400 to-slate-200">{t.titleHighlight}</span>
           </h1>
           <p className="text-lg md:text-2xl text-slate-400 font-light mb-8 max-w-3xl mx-auto">
-             Jailbreak Attacks and Narrative Defense in Role-Playing LLMs based on <span className="text-accent-red font-medium">Query Sparsity</span> & <span className="text-accent-red font-medium">Role Conflict</span>
+             {t.subtitle}
           </p>
         </motion.div>
         
@@ -118,10 +151,10 @@ const Hero: React.FC = () => {
             className="flex flex-col md:flex-row gap-4 justify-center pointer-events-auto"
         >
             <a href="#background" className="px-8 py-3 bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors">
-                Explore Research
+                {t.explore}
             </a>
             <a href="https://aclanthology.org/2025.coling-main.494/" target="_blank" rel="noreferrer" className="px-8 py-3 border border-white/20 text-white hover:bg-white/10 transition-all backdrop-blur-sm">
-                Read Paper
+                {t.paper}
             </a>
         </motion.div>
       </div>
