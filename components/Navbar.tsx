@@ -44,21 +44,7 @@ const Navbar: React.FC = () => {
     { name: t.roadmap, href: '#roadmap' },
   ];
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.substring(1);
-    const element = document.getElementById(targetId);
-    if (element) {
-      // 80px offset for the fixed navbar
-      const navHeight = 80; 
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - navHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
+  const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
 
@@ -87,7 +73,6 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
               className="text-sm font-medium text-slate-300 hover:text-accent-gold transition-colors tracking-widest uppercase"
             >
               {link.name}
@@ -143,7 +128,7 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
+              onClick={handleNavClick}
               className="text-slate-300 hover:text-accent-gold py-2 border-b border-slate-800"
             >
               {link.name}

@@ -84,13 +84,6 @@ const HeroParticles = () => {
 const Hero: React.FC = () => {
   const { language } = useLanguage();
 
-  const handleScrollDown = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
-  };
-
   const content = {
     en: {
       tag: 'Undergraduate Research Project',
@@ -165,9 +158,9 @@ const Hero: React.FC = () => {
       </div>
       
       {/* Scroll Indicator */}
-      <div 
+      <a 
+        href="#background"
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20 cursor-pointer group pointer-events-auto"
-        onClick={handleScrollDown}
       >
         <span className="text-slate-500 text-xs tracking-[0.2em] font-medium uppercase group-hover:text-slate-300 transition-colors">
           {t.discover}
@@ -180,7 +173,7 @@ const Hero: React.FC = () => {
         >
           <ArrowDown size={20} className="text-slate-400 group-hover:text-accent-gold transition-colors" />
         </motion.div>
-      </div>
+      </a>
     </div>
   );
 };
