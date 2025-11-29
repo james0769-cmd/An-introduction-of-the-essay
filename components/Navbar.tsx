@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Languages } from 'lucide-react';
+import { Menu, X, Languages, FileText } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 
 const Navbar: React.FC = () => {
@@ -22,14 +22,16 @@ const Navbar: React.FC = () => {
       attack: 'Attack',
       defense: 'Defense',
       roadmap: 'Roadmap',
-      dataset: 'View Dataset'
+      dataset: 'View Dataset',
+      paper: 'Read Paper'
     },
     zh: {
       background: '研究背景',
       attack: '攻击演示',
       defense: '防御机制',
       roadmap: '研究路线',
-      dataset: '查看数据集'
+      dataset: '查看数据集',
+      paper: '阅读论文'
     }
   };
 
@@ -41,6 +43,24 @@ const Navbar: React.FC = () => {
     { name: t.defense, href: '#defense' },
     { name: t.roadmap, href: '#roadmap' },
   ];
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.substring(1);
+    const element = document.getElementById(targetId);
+    if (element) {
+      // 80px offset for the fixed navbar
+      const navHeight = 80; 
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <nav
@@ -67,6 +87,7 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => scrollToSection(e, link.href)}
               className="text-sm font-medium text-slate-300 hover:text-accent-gold transition-colors tracking-widest uppercase"
             >
               {link.name}
@@ -75,15 +96,27 @@ const Navbar: React.FC = () => {
           
           <button 
             onClick={toggleLanguage}
-            className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors border-l border-slate-700 pl-6"
           >
             <Languages size={18} />
             {language === 'en' ? 'CN' : 'EN'}
           </button>
 
-          <button className="px-6 py-2 border border-accent-gold/50 text-accent-gold text-sm tracking-widest hover:bg-accent-gold hover:text-slate-900 transition-all duration-300 shadow-[0_0_15px_rgba(251,191,36,0.1)] hover:shadow-[0_0_20px_rgba(251,191,36,0.4)]">
-            {t.dataset}
-          </button>
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://aclanthology.org/2025.coling-main.494/" 
+              target="_blank" 
+              rel="noreferrer"
+              className="flex items-center gap-2 text-sm font-medium text-white hover:text-accent-gold transition-colors tracking-widest uppercase border border-slate-600 hover:border-accent-gold px-4 py-2 rounded-sm"
+            >
+              <FileText size={14} />
+              {t.paper}
+            </a>
+
+            <button className="px-6 py-2 border border-accent-gold/50 text-accent-gold text-sm tracking-widest hover:bg-accent-gold hover:text-slate-900 transition-all duration-300 shadow-[0_0_15px_rgba(251,191,36,0.1)] hover:shadow-[0_0_20px_rgba(251,191,36,0.4)]">
+              {t.dataset}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
@@ -110,13 +143,22 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => scrollToSection(e, link.href)}
               className="text-slate-300 hover:text-accent-gold py-2 border-b border-slate-800"
-              onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
             </a>
           ))}
-          <button className="w-full mt-4 px-6 py-3 bg-accent-gold text-slate-900 font-bold">
+          <a 
+            href="https://aclanthology.org/2025.coling-main.494/" 
+            target="_blank" 
+            rel="noreferrer"
+            className="flex items-center justify-center gap-2 w-full py-3 border border-slate-600 text-white font-bold"
+          >
+             <FileText size={16} />
+             {t.paper}
+          </a>
+          <button className="w-full px-6 py-3 bg-accent-gold text-slate-900 font-bold">
             {t.dataset}
           </button>
         </div>

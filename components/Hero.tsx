@@ -5,6 +5,7 @@ import { MeshDistortMaterial, Sphere, Float, Stars, Text } from '@react-three/dr
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
+import { ArrowDown } from 'lucide-react';
 
 // Add type definitions for R3F elements to fix JSX.IntrinsicElements errors
 declare global {
@@ -83,6 +84,13 @@ const HeroParticles = () => {
 const Hero: React.FC = () => {
   const { language } = useLanguage();
 
+  const handleScrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
   const content = {
     en: {
       tag: 'Undergraduate Research Project',
@@ -94,7 +102,7 @@ const Hero: React.FC = () => {
         </>
       ),
       explore: 'Explore Research',
-      paper: 'Read Paper'
+      discover: 'DISCOVER'
     },
     zh: {
       tag: '大学生创新创业训练计划',
@@ -106,7 +114,7 @@ const Hero: React.FC = () => {
         </>
       ),
       explore: '探索研究',
-      paper: '阅读论文'
+      discover: '探索更多'
     }
   };
 
@@ -153,20 +161,26 @@ const Hero: React.FC = () => {
             <a href="#background" className="px-8 py-3 bg-white text-slate-900 font-bold hover:bg-slate-200 transition-colors">
                 {t.explore}
             </a>
-            <a href="https://aclanthology.org/2025.coling-main.494/" target="_blank" rel="noreferrer" className="px-8 py-3 border border-white/20 text-white hover:bg-white/10 transition-all backdrop-blur-sm">
-                {t.paper}
-            </a>
         </motion.div>
       </div>
       
       {/* Scroll Indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+      <div 
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20 cursor-pointer group pointer-events-auto"
+        onClick={handleScrollDown}
       >
-        <div className="w-[1px] h-16 bg-gradient-to-b from-transparent via-slate-500 to-transparent"></div>
-      </motion.div>
+        <span className="text-slate-500 text-xs tracking-[0.2em] font-medium uppercase group-hover:text-slate-300 transition-colors">
+          {t.discover}
+        </span>
+        <motion.div 
+          className="w-12 h-12 rounded-full border border-slate-600 flex items-center justify-center bg-slate-900/30 backdrop-blur-sm group-hover:border-accent-gold group-hover:bg-slate-900/60 transition-all duration-300"
+          whileHover={{ scale: 1.1 }}
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <ArrowDown size={20} className="text-slate-400 group-hover:text-accent-gold transition-colors" />
+        </motion.div>
+      </div>
     </div>
   );
 };
